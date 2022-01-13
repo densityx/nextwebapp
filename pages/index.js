@@ -5,17 +5,6 @@ import Image from 'next/image'
 export default function Home() {
     return (
         <Layout>
-            <Head>
-                <title>
-                    Next Webapp by Ahmad Aziz
-                </title>
-                <meta name="description" content="Next Webapp by Ahmad Aziz" />
-                <link rel="icon" href="/favicon.ico"/>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-            </Head>
-
             <div className="w-full">
                 <div className="flex flex-col justify-center px-6 py-12 bg-white rounded-2xl shadow-sm">
                     <Image
