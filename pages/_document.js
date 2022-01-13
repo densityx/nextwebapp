@@ -8,7 +8,7 @@ export default function Document() {
                     Next Webapp by Ahmad Aziz
                 </title>
                 <meta name="description" content="Next Webapp by Ahmad Aziz" />
-                <link rel="icon" href="../public/favicon.ico"/>
+                <link rel="icon" href="/favicon.ico"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link
