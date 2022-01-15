@@ -219,13 +219,20 @@ export default function PostDetail({ post, comments }) {
                     </div>
                 </div>
 
-                {commentState.map(comment => (
-                    <CommentCard
-                        key={comment.id}
-                        comment={comment}
-                        onCommentDelete={deleteComment}
-                    />
-                ))}
+                {
+                    commentState.length ?
+                        commentState.map(comment => (
+                            <CommentCard
+                                key={comment.id}
+                                comment={comment}
+                                onCommentDelete={deleteComment}
+                            />
+                        ))
+                    :
+                        <div className="p-6 bg-white rounded-2xl shadow-sm">
+                            <p className="text-center text-gray-600">There are currently no comments available</p>
+                        </div>
+                }
             </div>
         </Layout>
     )
