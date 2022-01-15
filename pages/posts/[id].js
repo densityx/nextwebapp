@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import CommentCard from "../../components/comment-card";
 import { useRouter } from 'next/router';
 import useUser from "../../lib/useUser";
+import fetchJson from '../../lib/fetchJson';
 
 export default function PostDetail({ post, comments }) {
     const router = useRouter();
@@ -44,7 +45,7 @@ export default function PostDetail({ post, comments }) {
 
     const updatePost = () => {
         if (state.title.length > 0 && state.body.length > 0) {
-            fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
+            fetchJson(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
                     title: state.title,
@@ -54,7 +55,6 @@ export default function PostDetail({ post, comments }) {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             })
-                .then((response) => response.json())
                 .then((json) => {
                     setState({
                         editMode: false,
@@ -66,10 +66,9 @@ export default function PostDetail({ post, comments }) {
     }
 
     const deletePost = () => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
+        fetchJson(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
             method: 'DELETE',
         })
-            .then((response) => response.json())
             .then((json) => {
                 if (_.isEmpty(json)) {
                     router.push('/posts')
@@ -239,8 +238,8 @@ export default function PostDetail({ post, comments }) {
 }
 
 export async function getServerSideProps({ params }) {
-    const post = await (await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)).json()
-    const comments = await (await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}/comments`)).json()
+    const post = await fetchJson(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+    const comments = await fetchJson(`https://jsonplaceholder.typicode.com/posts/${params.id}/comments`)
 
     if (!post) {
         return {

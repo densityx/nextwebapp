@@ -1,5 +1,6 @@
 import Layout from "../../components/layout";
 import PostCard from "../../components/post-card";
+import fetchJson from "../../lib/fetchJson";
 
 export default function Posts({ posts }) {
     return (
@@ -32,8 +33,7 @@ export default function Posts({ posts }) {
 }
 
 export async function getServerSideProps() {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-    const posts = await res.json()
+    const posts = await fetchJson(`https://jsonplaceholder.typicode.com/posts`)
 
     if (!posts) {
         return {

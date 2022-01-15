@@ -1,6 +1,7 @@
 import {useState} from "react";
 import _ from "lodash";
 import useUser from "../lib/useUser";
+import fetchJson from "../lib/fetchJson";
 
 export default function CommentCard({ comment, onCommentDelete }) {
     const { user } = useUser();
@@ -26,7 +27,7 @@ export default function CommentCard({ comment, onCommentDelete }) {
 
     const updateComment = () => {
         if (state.body.length > 0) {
-            fetch(`https://jsonplaceholder.typicode.com/comments/${comment.id}`, {
+            fetchJson(`https://jsonplaceholder.typicode.com/comments/${comment.id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
                     body: state.body
@@ -35,7 +36,6 @@ export default function CommentCard({ comment, onCommentDelete }) {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             })
-                .then((response) => response.json())
                 .then((json) => {
                     setState({
                         editMode: false,
@@ -46,10 +46,9 @@ export default function CommentCard({ comment, onCommentDelete }) {
     }
 
     const deleteComment = () => {
-        fetch(`https://jsonplaceholder.typicode.com/comments/${comment.id}`, {
+        fetchJson(`https://jsonplaceholder.typicode.com/comments/${comment.id}`, {
             method: 'DELETE',
         })
-            .then((response) => response.json())
             .then((json) => {
                 if (_.isEmpty(json)) {
                     onCommentDelete(comment.id)

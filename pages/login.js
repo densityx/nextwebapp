@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import fetchJson, { FetchError } from "../lib/fetchJson";
 
 export default function Login() {
-    // here we just check if user is already logged in and redirect to posts page
+    // here we just check if user is already logged in and redirect to 'posts' page
     const { mutateUser } = useUser({
         redirectTo: "/posts",
         redirectIfFound: true,
