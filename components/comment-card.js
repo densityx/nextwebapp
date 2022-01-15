@@ -19,7 +19,7 @@ export default function CommentCard({ comment, onCommentDelete }) {
 
     const toggleEditMode = () => {
         setState({
-            body: comment.body,
+            body: state.body,
             editMode: !state.editMode,
         })
     }

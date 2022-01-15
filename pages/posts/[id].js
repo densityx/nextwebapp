@@ -36,8 +36,8 @@ export default function PostDetail({ post, comments }) {
 
     const toggleEditMode = () => {
         setState({
-            title: post.title,
-            body: post.body,
+            title: state.title,
+            body: state.body,
             editMode: !state.editMode,
         })
     }
@@ -61,6 +61,8 @@ export default function PostDetail({ post, comments }) {
                         title: json.title,
                         body: json.body,
                     })
+
+                    console.log(json.title, json.body)
                 });
         }
     }
