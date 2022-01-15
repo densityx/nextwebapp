@@ -61,8 +61,6 @@ export default function PostDetail({ post, comments }) {
                         title: json.title,
                         body: json.body,
                     })
-
-                    console.log(json.title, json.body)
                 });
         }
     }

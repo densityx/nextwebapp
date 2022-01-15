@@ -26,8 +26,6 @@ export default function CommentCard({ comment, onCommentDelete }) {
 
     const updateComment = () => {
         if (state.body.length > 0) {
-            console.log(state.body)
-
             fetch(`https://jsonplaceholder.typicode.com/comments/${comment.id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
@@ -43,8 +41,6 @@ export default function CommentCard({ comment, onCommentDelete }) {
                         editMode: false,
                         body: json.body,
                     })
-
-                    console.log(json.body);
                 });
         }
     }
